@@ -18,3 +18,6 @@ String扩展
 #### DateExtension
 
 时间格式化的扩展
+
+添加时间格式
+example: 今天10:00, 昨天11:00
