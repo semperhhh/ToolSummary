@@ -12,7 +12,7 @@ extension String {
         return result
     }
     
-    /// 时间格式 example: 今天 10:00, 昨天 11:00
+    /// 时间戳转时间格式 example: 今天 10:00, 昨天 11:00
     /// - Returns: 字符串
     func toTimeChangeNow() -> String {
         let interval = self.prefix(10)
