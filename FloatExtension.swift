@@ -12,7 +12,7 @@ extension Float {
     var toIntUp: Int {
         Int(self.rounded(.up))
     }
-    
+    // 保留小数位
     func toRounded(mult: Int) -> Float {
         guard mult > 0 else {
             return self.rounded()
