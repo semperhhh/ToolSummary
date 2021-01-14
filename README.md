@@ -27,3 +27,7 @@ String扩展
 #### 😁 FloatExtension
 
   * float转int的四舍五入
+
+#### 🦌 ArrayExtension
+
+  * 数组,字典转JSON字符串
