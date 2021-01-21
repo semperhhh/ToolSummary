@@ -8,6 +8,9 @@ extension Int {
     /// - Parameter dateformatter: 时间的格式
     /// - Returns: 时间字符串
     func toTimeFormatter(_ units: IntTimeUnit = .seconds, dateformatter: String = "HH:mm:ss") -> String {
+        if self == 0 {
+            return ""
+        }
         let formatter = DateFormatter()
         formatter.dateFormat = dateformatter
         var c = DateComponents()
