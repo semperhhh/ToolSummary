@@ -33,7 +33,9 @@ String扩展
   * 数组,字典转JSON字符串
   
 #### ⌚️ PHextension
+
+添加了PH的protocol;
  
   * 给String和Int添加一个中间是密文的11位手机号的计算属性
-  
-    添加了PH的protocol;
+    
+  * Date添加了时间格式化的计算属性
