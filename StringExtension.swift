@@ -15,7 +15,7 @@ extension String {
     /// 时间戳转时间格式 example: 今天 10:00, 昨天 11:00
     /// - Returns: 字符串
     func toTimeChangeNow() -> String {
-        if self == 0 {
+        guard !self.isEmpty else {
             return ""
         }
         let interval = self.prefix(10)
