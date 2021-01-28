@@ -8,6 +8,7 @@ struct PH<T> {
     }
 }
 
+// MARK: - String
 /// 当T是string类型的时候
 extension PH where T == String {
     /// 4位密文手机号
@@ -27,6 +28,7 @@ extension PH where T == String {
     }
 }
 
+// MARK: - Int
 extension PH where T == Int {
     /// 4位密文手机号
     var toMobilePhone: String {
@@ -43,6 +45,37 @@ extension PH where T == Int {
             }
         }
         return result
+    }
+}
+
+// MARK: - Date
+extension PH where T == Date {
+
+    // 获取UTC-8时区的天
+    var currentDay: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.timeZone = TimeZone(abbreviation: "UTC+8")
+        formatter.dateFormat = "dd"
+        return formatter.string(from: base)
+    }
+
+    // 获取UTC-8时区的月
+    var currentMonth: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.timeZone = TimeZone(abbreviation: "UTC+8")
+        formatter.dateFormat = "MM"
+        return formatter.string(from: base)
+    }
+
+    // 获取UTC-8时区的年
+    var currentYear: String {
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "zh_CN")
+        formatter.timeZone = TimeZone(abbreviation: "UTC+8")
+        formatter.dateFormat = "yyyy"
+        return formatter.string(from: base)
     }
 }
 
