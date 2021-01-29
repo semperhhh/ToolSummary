@@ -37,5 +37,3 @@ String扩展
 添加了PH的protocol;
  
   * 给String和Int添加一个中间是密文的11位手机号的计算属性
-    
-  * Date添加了时间格式化的计算属性
