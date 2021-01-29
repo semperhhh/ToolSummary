@@ -1,3 +1,4 @@
+// MARK: - String
 extension String {
 
     /// 时间戳转字符串格式
@@ -11,7 +12,7 @@ extension String {
         let result = formatter.string(from: date)
         return result
     }
-    
+
     /// 时间戳转时间格式 example: 今天 10:00, 昨天 11:00
     /// - Returns: 字符串
     func toTimeChangeNow() -> String {
@@ -20,22 +21,21 @@ extension String {
         }
         let interval = self.prefix(10)
         // 日期
-        let formatter = DateFormatter()
-        formatter.dateFormat = "yyyy.MM.dd"
+        let lhsDate = Date().phDate
+        let rhsDate = Date(timeIntervalSince1970: TimeInterval(interval) ?? 0).phDate
+
         // 年
-        guard (Int(Date().currentYear()) ?? 0) == (Int(Date(timeIntervalSince1970: TimeInterval(interval) ?? 0).currentYear()) ?? 0) else {
+        guard lhsDate.year == rhsDate.year else {
             return self.toDateString("yyyy.MM.dd HH:mm")
         }
         // 月
-        guard (Int(Date().currentMonth()) ?? 0) == (Int(Date(timeIntervalSince1970: TimeInterval(interval) ?? 0).currentMonth()) ?? 0) else {
+        guard lhsDate.month == rhsDate.month else {
             return self.toDateString("MM.dd HH:mm")
         }
         // 天
-        let now: Int = Int(Date().currentDay()) ?? 0
-        let last: Int = Int(Date(timeIntervalSince1970: TimeInterval(interval) ?? 0).currentDay()) ?? 0
-        if now == last {
+        if lhsDate.day == rhsDate.day {
             return "今天 \(self.toDateString("HH:mm"))"
-        } else if now - 1 == last {
+        } else if lhsDate.day - 1 == rhsDate.day {
             return "昨天 \(self.toDateString("HH:mm"))"
         } else {
             return self.toDateString("MM.dd HH:mm")
