@@ -18,7 +18,8 @@ String扩展
 
 #### 🤵 DateExtension
 
-  * 时间格式化的扩展
+  * 时间格式化的扩展;
+  * 时间的偏移函数``func offset(unit: String = "dd", offset: Int) -> Date``,默认偏移时间单位是天,正数向未来偏移,负数向过去偏移;
 
 #### 🤭 IntExtension
 
