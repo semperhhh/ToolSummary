@@ -1,14 +1,27 @@
 // MARK: - String
+
+enum DateTimeStampType {
+    case TimeStampTypeHaveMS    // 有毫秒
+    case TimeStampTypeNotHaveMS // 没有毫秒
+}
+
 extension String {
 
     /// 时间戳转字符串格式
     /// - Parameter dateFormatter: 格式
+    /// - Parameter timeStampType: 时间戳格式
     /// - Returns: 字符串
-    func toDateString(_ dateFormatter: String = "yyyy.MM.dd") -> String {
-        let interval = self.prefix(10)
+    func toDateString(dateFormatter: String = "yyyy.MM.dd", timeStampType: DateTimeStampType = .TimeStampTypeNotHaveMS) -> String {
+        let interval: Int
+        switch timeStampType {
+        case .TimeStampTypeHaveMS:
+            interval = (Int(self) ?? 1) / 1000
+        default:
+            interval = (Int(self) ?? 1)
+        }
         let formatter = DateFormatter()
         formatter.dateFormat = dateFormatter
-        let date = Date(timeIntervalSince1970: TimeInterval(interval) ?? 0)
+        let date = Date(timeIntervalSince1970: TimeInterval(interval))
         let result = formatter.string(from: date)
         return result
     }
